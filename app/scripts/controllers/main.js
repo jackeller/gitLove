@@ -13,7 +13,6 @@ angular.module('gitLoveApp')
     return {
         getCurrentUser: function getCurrentUser(query, callback) {
             $http.get('https://api.github.com/user', {
-                    
                 })
                 .success(function(data) {
                     callback(null, data);
@@ -32,7 +31,7 @@ angular.module('gitLoveApp')
             if (!error) {
                 $scope.data = data;
             } else {
-                console.log( error );
+                $scope.data = data;
             }
         });
     }
