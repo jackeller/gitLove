@@ -1,0 +1,25 @@
+
+<div id="search" ng-if="data !== undefined">
+
+    <!-- {{ data }} -->
+
+    <h1>User Info</h1>
+
+    <strong><a href="{{ data.html_url }}">{{ data.html_url }}</a></strong>
+    <ul>
+        <li>Name: {{ data.name }}</li>
+        <li>Blog: {{ data.blog }}</li>
+        <li>Location: {{ data.location }}</li>
+        <li>Email: {{ data.email }}</li>
+        <li>Bio: {{ data.bio }}</li>
+        <li>Public Repos: {{ data.public_repos }}</li>
+        <li><a href="{{ data.gists_url }}">Public Gists</a>: {{ data.public_gists }}</li>
+        <li>Followers: {{ data.followers }}</li>
+        <li>Following: {{ data.following }}</li>
+    </ul>
+
+</div>
+
+<p>Search for another user</p>
+
+<p><input ng-model="query" placeholder="search" ng-keyup="$event.keyCode == 13 && changeURL('user', query)"></p>
