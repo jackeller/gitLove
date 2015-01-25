@@ -29,9 +29,7 @@ angular.module('gitLoveApp')
 
 .controller('RepoCtrl', function($scope, $routeParams, $location, $timeout, repoFactory) {
 
-    // function to grab data from our factory
     $scope.getFactoryData = function getFactoryData() {
-
         repoFactory.searchRepos( $routeParams.repoID, function(error, data) {
             if (!error) {
 
@@ -40,9 +38,13 @@ angular.module('gitLoveApp')
 
                 console.log("Here is the first repo");
                 console.log( $scope.repos[0] );
-                
             }
         });
+    }
+
+    // Initialize the search as long as we are not on a blank search
+    if ( $routeParams.repoID !== "" ) {
+        $scope.getFactoryData();    
     }
 
     // Changes the route
@@ -57,15 +59,15 @@ angular.module('gitLoveApp')
     }
 
     // Watcher on the search field
-    $scope.$watch('searchText', function() {
-        console.log("searching for new searchText value" );
-        console.log( $scope.searchText );
+    // $scope.$watch('searchText', function() {
+    //     console.log("watch triggered" );
+    //     console.log( $scope.searchText );
 
-        $scope.changeURL( 'repo', $scope.searchText );
+    //     // $scope.changeURL( 'repo', $scope.searchText );
 
-        $scope.getFactoryData();
+    //     // $scope.getFactoryData();
 
-    });
+    // });
 
     
 
