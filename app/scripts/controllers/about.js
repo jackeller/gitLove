@@ -8,34 +8,38 @@
  * Controller of the gitLoveApp
  */
 angular.module('gitLoveApp')
-  .controller('AboutCtrl', function ($scope) {
+
+.factory('dataFactory', function($http) {
+    return {
+        searchRepos: function searchRepos(query, callback) {
+            $http.get('https://api.github.com/search/repositories', {
+                    params: {
+                        q: query
+                    }
+                })
+                .success(function(data) {
+                    callback(null, data);
+                })
+                .error(function(e) {
+                    callback(e);
+                });
+        }
+    };
+})
+
+.controller('AboutCtrl', function($scope, dataFactory) {
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+        'HTML5 Boilerplate',
+        'AngularJS',
+        'Karma'
     ];
 
-    $scope.categories = [
-      {'id': 0, 'name': 'Development'},
-      {'id': 1, 'name': 'Design'},
-      {'id': 2, 'name': 'Exercise'},
-      {'id': 3, 'name': 'Humor'}
-    ];
+    $scope.executeSearch = function executeSearch() {
+        dataFactory.searchRepos($scope.query, function(error, data) {
+            if (!error) {
+                $scope.repos = data.items;
+            }
+        });
+    }
 
-    $scope.bookmarks = [
-      {'id': 0, 'title': 'AngularJS', 'url': 'http://angularjs.org', 'category': 'Development' },
-      {'id': 1, 'title': 'Egghead.io', 'url': 'http://angularjs.org', 'category': 'Development' },
-      {'id': 2, 'title': 'A List Apart', 'url': 'http://alistapart.com/', 'category': 'Design' },
-      {'id': 3, 'title': 'One Page Love', 'url': 'http://onepagelove.com/', 'category': 'Design' },
-      {'id': 4, 'title': 'MobilityWOD', 'url': 'http://www.mobilitywod.com/', 'category': 'Exercise' },
-      {'id': 5, 'title': 'Robb Wolf', 'url': 'http://robbwolf.com/', 'category': 'Exercise' },
-      {'id': 6, 'title': 'Senor Gif', 'url': 'http://memebase.cheezburger.com/senorgif', 'category': 'Humor' },
-      {'id': 7, 'title': 'Wimp', 'url': 'http://wimp.com', 'category': 'Humor' },
-      {'id': 8, 'title': 'Dump', 'url': 'http://dump.com', 'category': 'Humor' }
-    ];
-
-
-
-
-
-  });
+});

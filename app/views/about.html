@@ -1,5 +1,19 @@
-<p>This is the about view.</p>
+<p>Hit enter to search</p>
 
-<p ng-repeat="category in categories">{{category.name}} foo</p>
+<div id="search">
+    <input ng-model="query" placeholder="search" ng-keyup="$event.keyCode == 13 && executeSearch()">
 
-<p ng-repeat="bookmark in bookmarks">{{bookmark.title}} foo</p>
+    <div class="repo" ng-repeat="repo in repos">
+
+        <!-- {{ repo }} -->
+
+        <strong><a href="{{repo.url}}">{{ repo.full_name }}</a></strong>
+        <ul>
+            <li>Author: {{ repo.owner.login }}</li>
+            <li>Description: {{ repo.description }}</li>
+            <li>Watchers: {{ repo.watchers }}</li>
+            <li>Language: {{ repo.language }}</li>
+        </ul>
+
+    </div>
+</div>
