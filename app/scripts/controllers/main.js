@@ -32,7 +32,7 @@ angular.module('gitLoveApp')
             if (!error) {
                 $scope.data = data;
             } else {
-                $scope.data = error;
+                console.log( error );
             }
         });
     }
