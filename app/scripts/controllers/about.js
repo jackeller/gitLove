@@ -9,7 +9,7 @@
  */
 angular.module('gitLoveApp')
 
-.factory('dataFactory', function($http) {
+.factory('aboutFactory', function($http) {
     return {
         searchRepos: function searchRepos(query, callback) {
             $http.get('https://api.github.com/search/repositories', {
@@ -27,15 +27,10 @@ angular.module('gitLoveApp')
     };
 })
 
-.controller('AboutCtrl', function($scope, dataFactory) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
+.controller('AboutCtrl', function($scope, aboutFactory) {
 
     $scope.executeSearch = function executeSearch() {
-        dataFactory.searchRepos($scope.query, function(error, data) {
+        aboutFactory.searchRepos($scope.query, function(error, data) {
             if (!error) {
                 $scope.repos = data.items;
             }
