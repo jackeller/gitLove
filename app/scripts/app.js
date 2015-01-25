@@ -23,15 +23,19 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/user/:userID', {
-        templateUrl: 'views/user.html',
-        controller: 'UserCtrl'
-      })
       .when('/user', {
         templateUrl: 'views/user.html',
         controller: 'UserCtrl'
       })
+      .when('/user/:userID', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      })
       .when('/repo', {
+        templateUrl: 'views/repo.html',
+        controller: 'RepoCtrl'
+      })
+      .when('/repo/:repoID', {
         templateUrl: 'views/repo.html',
         controller: 'RepoCtrl'
       })

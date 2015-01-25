@@ -1,5 +1,5 @@
 
-<div id="search" ng-if="data !== undefined">
+<div id="search" ng-if="data.name != null">
 
     <!-- {{ data }} -->
 
@@ -20,6 +20,8 @@
 
 </div>
 
-<p>Search for another user</p>
+<p ng-if="data.name != null">Search for another user</p>
 
-<p><input ng-model="query" placeholder="search" ng-keyup="$event.keyCode == 13 && changeURL('user', query)"></p>
+<p ng-if="data.name == null">Search for a user</p>
+
+<p><input ng-model="query" placeholder="" ng-keyup="$event.keyCode == 13 && changeURL('user', query)"></p>

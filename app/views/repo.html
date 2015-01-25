@@ -1,13 +1,21 @@
-<p>Type in a topic or repo you'd like to search for, then hit enter.</p>
+<p>This searches automatically, after a half second delay.</p>
+
+<p>
+    <input 
+        id="searchText" 
+        ng-model="searchText" 
+        ng-model-options="{debounce: 500}" 
+        placeholder="search" 
+        >
+</p>
 
 <div id="search">
-    <p><input ng-model="query" placeholder="search" ng-keyup="$event.keyCode == 13 && executeSearch()"></p>
-
-    <div class="repo" ng-repeat="repo in repos ">
+    
+    <div class="repo" ng-repeat="repo in repos | filter: filterText ">
 
         <!-- {{ repo }} -->
 
-        <strong><a href="{{repo.url}}">{{ repo.full_name }}</a></strong>
+        <strong>{{ repo.full_name }} - <a href="{{repo.url}}">View the repo on Github</a></strong>
         <ul>
             <li>Author: <a href="/#/user/{{repo.owner.login}}">{{ repo.owner.login }}</a></li>
             <li>Description: {{ repo.description }}</li>
