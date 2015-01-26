@@ -11,8 +11,8 @@ angular.module('gitLoveApp')
  
 .factory('mainFactory', function($http) {
     return {
-        getCurrentUser: function getCurrentUser(query, callback) {
-            $http.get('https://api.github.com/user', {
+        getAllRepos: function getAllRepos(callback) {
+            $http.get('https://api.github.com/repositories', {
                 })
                 .success(function(data) {
                     callback(null, data);
@@ -26,11 +26,9 @@ angular.module('gitLoveApp')
 
 .controller('MainCtrl', function($scope, mainFactory) {
 
-    $scope.executeSearch = function executeSearch() {
-        mainFactory.getCurrentUser($scope.query, function(error, data) {
+    $scope.getAllRepos = function getAllRepos() {
+        mainFactory.getAllRepos(function(error, data) {
             if (!error) {
-                $scope.data = data;
-            } else {
                 $scope.data = data;
             }
         });

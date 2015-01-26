@@ -29,6 +29,8 @@ angular.module('gitLoveApp')
 
 .controller('RepoCtrl', function($scope, $routeParams, $location, $timeout, repoFactory) {
 
+    console.log("hi");
+
     $scope.getFactoryData = function getFactoryData() {
         repoFactory.searchRepos( $routeParams.repoID, function(error, data) {
             if (!error) {
@@ -56,20 +58,7 @@ angular.module('gitLoveApp')
             console.log("change URL 2");
             $location.path('/' + base);
         }
-    }
-
-    // Watcher on the search field
-    // $scope.$watch('searchText', function() {
-    //     console.log("watch triggered" );
-    //     console.log( $scope.searchText );
-
-    //     // $scope.changeURL( 'repo', $scope.searchText );
-
-    //     // $scope.getFactoryData();
-
-    // });
-
-    
+    }   
 
 });
 
