@@ -26,16 +26,21 @@ angular.module('gitLoveApp')
 
 .controller('MainCtrl', function($scope, mainFactory) {
 
-    console.log("hi");
-
     $scope.getAllRepos = function getAllRepos() {
         mainFactory.getAllRepos(function(error, data) {
             if (!error) {
                 $scope.data = data;
             }
         });
-    }
+    };
 
     $scope.getAllRepos();
+
+
+    $scope.awesomeThings = [
+        'asdf',
+        'tw',
+        'three'
+        ];
 
   });
