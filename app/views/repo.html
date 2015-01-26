@@ -1,4 +1,4 @@
-<p>Hit enter to search.</p>
+<p>This queries <a href="https://developer.github.com/v3/search/#search-repositories">https://developer.github.com/v3/search/#search-repositories</a> and looks for repos and topics similar to your search term.</p>
 
 <p>
     <input 
@@ -8,19 +8,25 @@
         >
 </p>
 
-<div id="search">
+<table class="repos">
     
-    <div class="repo" ng-repeat="repo in repos | filter: filterText ">
+    <tr ng-repeat="repo in repos">
 
-        <!-- {{ repo }} -->
-
-        <strong>{{ repo.full_name }} - <a href="{{repo.url}}">View the repo on Github</a></strong>
-        <ul>
-            <li>Author: <a href="/#/user/{{repo.owner.login}}">{{ repo.owner.login }}</a></li>
-            <li>Description: {{ repo.description }}</li>
-            <li>Watchers: {{ repo.watchers }}</li>
-            <li>Language: {{ repo.language }}</li>
-        </ul>
-
-    </div>
-</div>
+        <td>
+            <p><strong>{{ repo.full_name }}</strong></p>
+            <p><a href="{{repo.url}}">View on Github</a></p>
+        </td>
+        <td>
+            <p>Author:</p>
+            <p><a href="/#/user/{{repo.owner.login}}">{{ repo.owner.login }}</a></p>
+        </td>
+        <td>
+            <p>Description:</p>
+            <p>{{ repo.description }}</p>
+        </td>
+        
+        <td>Watchers: {{ repo.watchers }}</td>
+        <td>Language: {{ repo.language }}</td>
+        
+    </tr>
+</table>

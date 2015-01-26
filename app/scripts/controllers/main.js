@@ -26,6 +26,8 @@ angular.module('gitLoveApp')
 
 .controller('MainCtrl', function($scope, mainFactory) {
 
+    console.log("hi");
+
     $scope.getAllRepos = function getAllRepos() {
         mainFactory.getAllRepos(function(error, data) {
             if (!error) {
@@ -33,5 +35,7 @@ angular.module('gitLoveApp')
             }
         });
     }
+
+    $scope.getAllRepos();
 
   });
