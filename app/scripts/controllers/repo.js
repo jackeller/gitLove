@@ -29,36 +29,27 @@ angular.module('gitLoveApp')
 
 .controller('RepoCtrl', function($scope, $routeParams, $location, $timeout, repoFactory) {
 
-    console.log("hi");
-
     $scope.getFactoryData = function getFactoryData() {
         repoFactory.searchRepos( $routeParams.repoID, function(error, data) {
             if (!error) {
-
-                console.log("retrieved data successfully");
                 $scope.repos = data.items;
-
-                console.log("Here is the first repo");
-                console.log( $scope.repos[0] );
             }
         });
-    }
+    };
 
     // Initialize the search as long as we are not on a blank search
-    if ( $routeParams.repoID !== "" ) {
+    if ( $routeParams.repoID !== '' ) {
         $scope.getFactoryData();    
     }
 
     // Changes the route
     $scope.changeURL = function changeURL(base, param) {
         if (param) {
-            console.log("change URL 1");
             $location.path('/' + base + '/' + param);
         } else {
-            console.log("change URL 2");
             $location.path('/' + base);
         }
-    }   
+    };
 
 });
 

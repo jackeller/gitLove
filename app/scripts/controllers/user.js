@@ -26,7 +26,7 @@ angular.module('gitLoveApp')
 .controller('UserCtrl', function($scope, $routeParams, $location, userFactory) {
 
     $scope.dataFound = false;
-    $scope.user = $routeParams.userID || "Search for a user";
+    $scope.user = $routeParams.userID || 'Search for a user';
 
     $scope.executeSearch = function executeSearch() {
         userFactory.getCurrentUser($routeParams.userID, function(error, data) {
@@ -35,7 +35,7 @@ angular.module('gitLoveApp')
                 $scope.dataFound = true;
             }
         });
-    }
+    };
 
     // There's probably a cleaner way to trigger this on load.
     $scope.executeSearch();
@@ -46,6 +46,6 @@ angular.module('gitLoveApp')
         } else {
             $location.path('/' + base);
         }
-    }
+    };
 
 });

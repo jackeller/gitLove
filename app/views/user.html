@@ -1,5 +1,7 @@
 <p>Queries <a href="https://developer.github.com/v3/users/#get-a-single-user">https://developer.github.com/v3/users/#get-a-single-user</a> for info about an individual user.</p>
 
+<p>Try your id, or jackeller, or paulirish</p>
+
 <div id="search" ng-if="data.name != null">
 
     <!-- {{ data }} -->
@@ -14,7 +16,7 @@
         <li>Email: {{ data.email }}</li>
         <li>Bio: {{ data.bio }}</li>
         <li>Public Repos: {{ data.public_repos }}</li>
-        <li><a href="{{ data.gists_url }}">Public Gists</a>: {{ data.public_gists }}</li>
+        <li>Public Gists: {{ data.public_gists }}</li>
         <li>Followers: {{ data.followers }}</li>
         <li>Following: {{ data.following }}</li>
     </ul>
