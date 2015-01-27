@@ -33,13 +33,15 @@ angular.module('gitLoveApp')
         repoFactory.searchRepos( $routeParams.repoID, function(error, data) {
             if (!error) {
                 $scope.repos = data.items;
+
+                $scope.query = $routeParams.repoID;
             }
         });
     };
 
     // Initialize the search as long as we are not on a blank search
     if ( $routeParams.repoID !== '' ) {
-        $scope.getFactoryData();    
+        $scope.getFactoryData();
     }
 
     // Changes the route

@@ -4,19 +4,28 @@
 
 <p>Clicking on the author's name brings you to another page inside the SPA, with information pulled from the API about the author.</p>
 
-<p>Try 'rails' or 'core'</p>
+<p><i>Try 'rails' or 'core'</i></p>
 
 <p>
-    <input 
-        ng-model="query" 
+    <input
+        ng-model="query"
         placeholder="Filter"
         >
 </p>
 
 <table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Description</th>
+    </tr>
     <tr ng-repeat="repo in data | filter: query">
         <td>{{repo.id}}</td>
-        <td>{{repo.name}}</td>
+        <td>
+            <p>{{repo.name}}</p>
+            <p><a href="http://www.github.com/{{repo.owner.login}}/{{repo.name}}">View project on Github</a></p>
+        </td>
         <td><a href="/#/user/{{repo.owner.login}}">{{repo.owner.login}}</a></td>
         <td>{{repo.description}}</td>
     </tr>

@@ -1,29 +1,40 @@
 <p>Queries <a href="https://developer.github.com/v3/users/#get-a-single-user">https://developer.github.com/v3/users/#get-a-single-user</a> for info about an individual user.</p>
 
-<p>Try your id, or jackeller, or paulirish</p>
-
-
+<p><i>Try your github id, or jackeller, or paulirish</i></p>
 
 <div id="search" ng-if="data.name != null">
-
-    <!-- {{ data }} -->
 
     <h1>User Info</h1>
 
     <strong><a href="{{ data.html_url }}">{{ data.html_url }}</a></strong>
     <ul>
         <li>Name: {{ data.name }}</li>
-        <li>Blog: {{ data.blog }}</li>
-        <li>Location: {{ data.location }}</li>
-        <li>Email: {{ data.email }}</li>
+        <li>Blog: <a href="{{ data.blog }}">{{ data.blog }}</a></li>
+        <li>Location: {{ data.location }} <small><a ng-if="data.location" href="https://www.google.com/maps?q={{ data.location }}">Google Maps</a></small></li>
+        <li>Email: <a href="mailto:{{ data.email }}">{{ data.email }}</a></li>
         <li>Bio: {{ data.bio }}</li>
-        <li>Public Repos: {{ data.public_repos }}</li>
+        <li><a href="{{ data.html_url }}">Public Repos</a>: {{ data.public_repos }}</li>
         <li>Public Gists: {{ data.public_gists }}</li>
         <li>Followers: {{ data.followers }}</li>
         <li>Following: {{ data.following }}</li>
     </ul>
 
 </div>
+
+<div ng-if="repos != ''">
+    <h3>{{ data.name }}'s Repos</h3>
+    <table>
+        <tr ng-repeat="repo in repos">
+            <td>
+                <p>{{repo.name}}</p>
+                <p><a href="{{repo.html_url}}">View project on Github</a></p>
+            </td>
+            <td><p>{{repo.description}}</p></td>
+        </tr>
+    </table>
+</div>
+
+<!-- {{ repos }} -->
 
 <!-- handle 0 results -->
 <p ng-if="paramPassed != '' && data.name == null"><strong>Sorry, no user found with that name.</strong></p>

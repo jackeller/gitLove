@@ -19,6 +19,16 @@ angular.module('gitLoveApp')
                 .error(function(e) {
                     callback(e);
                 });
+        },
+
+        getUserRepos: function getUserRepos(reposURL, callback) {
+            $http.get(reposURL, {})
+                .success(function(data) {
+                    callback(null, data);
+                })
+                .error(function(e) {
+                    callback(e);
+                });
         }
     };
 })
@@ -26,14 +36,25 @@ angular.module('gitLoveApp')
 .controller('UserCtrl', function($scope, $routeParams, $location, userFactory) {
 
     $scope.user = $routeParams.userID || 'Search for a user';
+    $scope.repos = "";
 
     $scope.paramPassed = $routeParams.userID || "";
 
     $scope.executeSearch = function executeSearch() {
+
         userFactory.getCurrentUser($routeParams.userID, function(error, data) {
             if (!error) {
                 $scope.data = data;
+
+                userFactory.getUserRepos( data.repos_url, function(error, data) {
+
+                    if ( !error ) {
+                        $scope.repos = data;
+                    }
+
+                });
             }
+
         });
     };
 
