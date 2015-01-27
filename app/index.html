@@ -6,19 +6,29 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    
-    
+
+
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-    
+
 </head>
 
 <body ng-app="gitLoveApp">
 
     <div class="container">
 
-        <div class="header" ng-include="'partials/nav.html'"></div>
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li><a ng-href="/#/">Home</a>
+                </li>
+                <li><a ng-href="#/repo">Repo</a>
+                </li>
+                <li><a ng-href="#/user">User</a>
+                </li>
+            </ul>
+            <h3 class="text-muted">gitLove</h3>
+        </div>
 
         <div ng-view=""></div>
 

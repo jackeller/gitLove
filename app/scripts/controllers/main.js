@@ -8,7 +8,7 @@
  * Controller of the gitLoveApp
  */
 angular.module('gitLoveApp')
- 
+
 .factory('mainFactory', function($http) {
     return {
         getAllRepos: function getAllRepos(callback) {
@@ -35,12 +35,5 @@ angular.module('gitLoveApp')
     };
 
     $scope.getAllRepos();
-
-
-    $scope.awesomeThings = [
-        'asdf',
-        'tw',
-        'three'
-        ];
 
   });
