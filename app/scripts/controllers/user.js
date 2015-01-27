@@ -36,9 +36,9 @@ angular.module('gitLoveApp')
 .controller('UserCtrl', function($scope, $routeParams, $location, userFactory) {
 
     $scope.user = $routeParams.userID || 'Search for a user';
-    $scope.repos = "";
+    $scope.repos = '';
 
-    $scope.paramPassed = $routeParams.userID || "";
+    $scope.paramPassed = $routeParams.userID || '';
 
     $scope.executeSearch = function executeSearch() {
 
