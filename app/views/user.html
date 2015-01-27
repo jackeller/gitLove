@@ -2,6 +2,8 @@
 
 <p>Try your id, or jackeller, or paulirish</p>
 
+
+
 <div id="search" ng-if="data.name != null">
 
     <!-- {{ data }} -->
@@ -23,8 +25,11 @@
 
 </div>
 
-<p ng-if="data.name != null">Search for another user</p>
+<!-- handle 0 results -->
+<p ng-if="paramPassed != '' && data.name == null"><strong>Sorry, no user found with that name.</strong></p>
 
-<p ng-if="data.name == null">Search for a user</p>
+<p ng-if="paramPassed != ''">Search for another user</p>
+
+<p ng-if="paramPassed == ''">Search for a user</p>
 
 <p><input ng-model="query" placeholder="" ng-keyup="$event.keyCode == 13 && changeURL('user', query)"></p>

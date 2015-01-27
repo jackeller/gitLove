@@ -36,11 +36,4 @@ angular.module('gitLoveApp')
 
     $scope.getAllRepos();
 
-
-    $scope.awesomeThings = [
-        'asdf',
-        'tw',
-        'three'
-        ];
-
   });

@@ -25,14 +25,14 @@ angular.module('gitLoveApp')
 
 .controller('UserCtrl', function($scope, $routeParams, $location, userFactory) {
 
-    $scope.dataFound = false;
     $scope.user = $routeParams.userID || 'Search for a user';
+
+    $scope.paramPassed = $routeParams.userID || "";
 
     $scope.executeSearch = function executeSearch() {
         userFactory.getCurrentUser($routeParams.userID, function(error, data) {
             if (!error) {
                 $scope.data = data;
-                $scope.dataFound = true;
             }
         });
     };
