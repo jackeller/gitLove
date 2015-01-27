@@ -1,6 +1,13 @@
 <p>Queries <a href="https://developer.github.com/v3/users/#get-a-single-user">https://developer.github.com/v3/users/#get-a-single-user</a> for info about an individual user.</p>
 
+<p>Secondarily, creates a second query to grab their repos.</p>
+
 <p><i>Try your github id, or jackeller, or paulirish</i></p>
+
+<p><input ng-model="query" placeholder="" ng-keyup="$event.keyCode == 13 && changeURL('user', query)"></p>
+
+<!-- handle 0 results -->
+<p ng-if="paramPassed != '' && data.name == null"><strong>Sorry, no user found with that name.</strong></p>
 
 <div id="search" ng-if="data.name != null">
 
@@ -36,11 +43,4 @@
 
 <!-- {{ repos }} -->
 
-<!-- handle 0 results -->
-<p ng-if="paramPassed != '' && data.name == null"><strong>Sorry, no user found with that name.</strong></p>
 
-<p ng-if="paramPassed != ''">Search for another user</p>
-
-<p ng-if="paramPassed == ''">Search for a user</p>
-
-<p><input ng-model="query" placeholder="" ng-keyup="$event.keyCode == 13 && changeURL('user', query)"></p>
