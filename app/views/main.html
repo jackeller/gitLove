@@ -23,8 +23,7 @@
     <tr ng-repeat="repo in data | filter: query">
         <td>{{repo.id}}</td>
         <td>
-            <p>{{repo.name}}</p>
-            <p><a href="http://www.github.com/{{repo.owner.login}}/{{repo.name}}">View project on Github</a></p>
+          <p><a href="http://www.github.com/{{repo.owner.login}}/{{repo.name}}">{{repo.name}}</a></p>
         </td>
         <td><a href="/#/user/{{repo.owner.login}}">{{repo.owner.login}}</a></td>
         <td>{{repo.description}}</td>
